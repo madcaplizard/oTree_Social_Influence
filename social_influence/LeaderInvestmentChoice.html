@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+Leader's Investment Choice
+{% endblock %}
+
+{% block content %}
+{% if leader_choice_available %}
+  <p>The leader has chosen:<strong>{{ leader.investment_choice }}</strong> option</p>
+
+  {% if role == 'follower' %}
+    <form method="post">
+      
+      <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+  {% endif %}
+{% else %}
+  <p>The leader's investment choice is not available yet. Please wait.</p>
+{% endif %}
+{% endblock %}

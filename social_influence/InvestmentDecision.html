@@ -1,0 +1,55 @@
+{{ extends "global/Page.html" }}
+{{ load otree static }}
+
+{{ block title }}
+    Choose your investment option and indicate your confidence level:
+{{ endblock }}
+
+
+{{ block content }}
+
+<h1>Decision</h1>
+<center><img src="{{ static "TG/stocks.png" }}" /></center>
+
+    {% if player.round_number == 1 %}
+        <p>You are assigned as a {{ player.role }}.</p>
+        {% if player.role == 'leader' %}
+            <p>As a leader, you need to make an investment decision.</p>
+            <form method="POST">
+                
+                {% for option in investment_options %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="investment_choice" id="{{ option }}" value="{{ option }}" required>
+                        <label class="form-check-label" for="{{ option }}">{{ option }}</label>
+                    </div>
+                {% endfor %}
+    <div>
+        <p>Rate your confidence in your investment choice (0-100):</p>
+        <input type="range" id="confidence_level" name="confidence_level" min="0" max="100" step="1">
+    </div>
+                <br>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        {% else %}
+            <p>As a follower, you need to make an investment decision based on the information you received from the leader.</p>
+            
+            <form method="POST">
+                {% for option in investment_options %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="investment_choice" id="{{ option }}" value="{{ option }}" required>
+                        <label class="form-check-label" for="{{ option }}">{{ option }}</label>
+                    </div>
+                {% endfor %}
+    <div>
+        <p>Rate your confidence in your investment choice (0-100):</p>
+        <input type="range" id="confidence_level" name="confidence_level" min="0" max="100" step="1">
+    </div>
+                <br>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+            {% endif %}
+    {% endif %}
+
+
+    
+    {% endblock %}

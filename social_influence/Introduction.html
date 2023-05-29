@@ -1,0 +1,33 @@
+{{ extends "global/Page.html" }}
+{{ load otree static }}
+
+{{ block title }}
+    Introduction
+{{ endblock }}
+
+{{ block content }}
+    <h1>Introduction</h1>
+    <p>Welcome to the experiment on the effect of social influence on decision-making.</p>
+    <p>In this experiment, you will be assigned as either a leader or a follower. Leaders will make their investment decisions first, followed by the followers who will make their decisions after receiving information about what the leaders chose.</p>
+    <p>The aim of this experiment is to investigate whether participants' decisions are influenced by the decisions of others.</p>
+    <p>Please carefully read the instructions and make your decisions based on the information provided.</p>
+    <p>Click "Next" to proceed to the investment decision.</p>
+    
+   
+{{ formfield player.age }}
+
+{{ formfield player.gender }}
+ 
+{{ formfield player.income }}
+
+{{ next_button }}
+    
+{{ endblock }}
+
+  
+        
+
+    
+
+
+

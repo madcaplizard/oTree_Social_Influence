@@ -1,0 +1,28 @@
+{{ extends "global/Page.html" }}
+{{ load otree static }}
+
+{{ block title }}
+    Results
+{{ endblock }}
+
+{{ block content }}
+
+
+<p>Your confidence level: <strong>{{ player.confidence_level }}</strong></p>
+<p>You are assigned as a {{ role }}.</p>
+
+{% if player.round_number == 1 %}
+    <p>Your investment choice: <strong>{{ investment_choice }}</strong></p>
+{% else %}
+    {% if player.role == 'follower' %}
+        <p>Your investment choice: <strong>{{ investment_choice }}</strong></p>
+    {% else %}
+        <p>Leader investment choice: <strong>{{ leader_investment_choice }}</strong></p>
+    {% endif %}
+{% endif %}
+
+
+
+{{ endblock }}
+
+
